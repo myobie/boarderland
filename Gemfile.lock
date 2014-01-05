@@ -37,7 +37,11 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     erubis (2.7.0)
+    ethon (0.6.1)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     execjs (2.0.2)
+    ffi (1.9.3)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.0.4)
@@ -47,6 +51,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mashed (0.5.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
@@ -98,6 +103,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.6.6)
+      ethon (~> 0.6.1)
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -109,9 +116,11 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jquery-rails
+  mashed
   pg
   pry
   puma
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
+  typhoeus
   uglifier (>= 1.3.0)

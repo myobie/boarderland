@@ -10,6 +10,9 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery-rails'
 
+gem 'typhoeus'
+gem 'mashed'
+
 gem 'puma'
 
 group :development, :test do
