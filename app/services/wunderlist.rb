@@ -3,8 +3,30 @@ class Wunderlist
     @config ||= Mashed::Mash.new({
       client_id: nil,
       client_secret: nil,
-      base_url: "https://a.wunderlist.com/api"
+      base_url: "https://a.wunderlist.com/api",
+      authorize_url: "https://provider.wunderlist.com/login/oauth/authorize",
+      access_token_url: "https://provider.wunderlist.com/login/oauth/access_token"
     })
+  end
+
+  def self.authorize_url
+    "#{config.authorize_url}?client_id=#{config.client_id}"
+  end
+
+  def self.access_token(code)
+    response = Typhoeus.post(config.access_token_url, headers: {
+      "Accept" => "application/json",
+      "Content-Type" => "application/json"
+    }, body: JSON.generate({
+      client_id: config.client_id,
+      client_secret: config.client_secret,
+      code: code
+    }))
+
+    if response.success?
+      json = JSON.parse response.body
+      json["access_token"]
+    end
   end
 
   def initialize(access_token)
@@ -38,7 +60,9 @@ class Wunderlist
   def headers
     {
       "X-Access-Token" => access_token,
-      "X-Client-ID" => config.client_id
+      "X-Client-ID" => config.client_id,
+      "Accept" => "application/json",
+      "Content-Type" => "application/json"
     }
   end
 end

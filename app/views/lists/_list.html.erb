@@ -1,0 +1,15 @@
+<section class="list">
+  <h1><%= link_to list.title, list_path(list.id) %></h1>
+  <% if list.assignee_ids.present? %>
+    <ul class="avatars">
+      <% list.assignee_ids.each do |id| %>
+        <li><%= id %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p class="ratio" data-ratio="<%= list.ratio_of_completed_tasks %>"><%= list.percent_complete %>% complete</p>
+  <p class="vs">
+    <%= list.uncompleted_tasks_count %> tasks /
+    <%= list.completed_tasks_count %> completed
+  </p>
+</section>

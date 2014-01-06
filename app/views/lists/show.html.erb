@@ -1,0 +1,32 @@
+<section class="project">
+  <h1>Project: <%= @list.title %></h1>
+
+  <% if @list.assignee_ids.present? %>
+    <h2>People working on this project:</h2>
+    <ul>
+      <% @list.assignee_ids.each do |id| %>
+        <li><%= id %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><strong>No one is currently working on this project.</strong></p>
+  <% end %>
+
+  <% if @list.uncompleted_tasks.present? %>
+    <section class="tasks">
+      <h1>Uncompleted Tasks</h1>
+      <ul>
+        <%= render collection: @list.uncompleted_tasks, partial: 'task' %>
+      </ul>
+    </section>
+  <% end %>
+
+  <% if @list.completed_tasks.present? %>
+    <section class="tasks">
+      <h1>Completed Tasks</h1>
+      <ul>
+        <%= render collection: @list.completed_tasks, partial: 'task' %>
+      </ul>
+    </section>
+  <% end %>
+</section>

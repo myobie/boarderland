@@ -1,5 +1,15 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  private
+
+  def require_access_token
+    unless session[:access_token]
+      redirect_to authorize_wunderlist_path
+    end
+  end
+
+  def wunderlist
+    Wunderlist.new(session[:access_token])
+  end
 end

@@ -17,4 +17,5 @@ gem 'puma'
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-remote'
 end

@@ -1,0 +1,19 @@
+<h1>Choose a list to add:</h1>
+
+<% if @lists.present? %>
+  <%= form_tag add_lists_path do %>
+    <ul class="lists-to-add">
+      <% @lists.each do |list| %>
+        <li>
+          <label>
+            <%= check_box_tag 'lists[]', list.wunderlist_id %>
+            <%= list.title %>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+    <p><button type="submit">Add</button></p>
+  <% end %>
+<% else %>
+  <p>All of your lists have already been added (:</p>
+<% end %>
