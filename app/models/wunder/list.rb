@@ -20,7 +20,11 @@ class Wunder::List
   end
 
   def ratio_of_completed_tasks
-    (completed_tasks_count.to_f / tasks_count.to_f).round(3)
+    if completed_tasks_count > 0 && tasks_count > 0
+      (completed_tasks_count.to_f / tasks_count.to_f).round(3)
+    else
+      0.0
+    end
   end
 
   def percent_complete
