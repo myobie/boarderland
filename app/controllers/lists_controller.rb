@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_action :require_access_token
 
   def index
+    Rails.logger.warn("Chad about to get wunderlist_lists")
     list_ids = wunderlist_lists.map(&:id)
     db_lists = List.where(wunderlist_id: list_ids)
 
@@ -40,6 +41,11 @@ class ListsController < ApplicationController
     render
   end
 
+  def destroy
+    List.find(params[:id]).destroy!
+    redirect_to lists_path
+  end
+
   private
 
   def wunderlist_lists
@@ -56,6 +62,7 @@ class ListsController < ApplicationController
   end
 
   def info(list)
+    Rails.logger.warn("Chad: #{list.inspect}")
     json = wunderlist_lists.find { |remote_list| remote_list.id == list.wunderlist_id }
     uncompleted_tasks = wunderlist_uncompleted_tasks(list.wunderlist_id)
     completed_tasks = wunderlist_completed_tasks(list.wunderlist_id)
