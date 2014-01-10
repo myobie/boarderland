@@ -1,9 +1,9 @@
-<% @tasks_with_due_dates.each do |date, tasks| %>
+<% @timeline.each do |sprint| %>
 
 <ul>
-  <h2>before <%= date %></h2>
+  <h2>before <%= sprint.date %></h2>
   <ul>
-    <% tasks.each do |task| %>
+    <% sprint.tasks.each do |task| %>
     <li class="<%= task.completed_at.present? ? "completed" : "" %>"><%= task.title %> - <%= task.due_date %></li>
     <% end %>
   </ul>

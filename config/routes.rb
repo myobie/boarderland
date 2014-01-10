@@ -1,5 +1,5 @@
 Boarderland::Application.routes.draw do
-  get "timeline/index"
+  get "timeline" => 'timeline#index'
   get 'authorize/wunderlist' => 'wunderlist#authorize', as: :authorize_wunderlist
   get 'callback/wunderlist' => 'wunderlist#callback'
 
