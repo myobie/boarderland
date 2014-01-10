@@ -1,0 +1,13 @@
+<% @tasks_with_due_dates.each do |date, tasks| %>
+
+<ul>
+  <h2>before <%= date %></h2>
+  <ul>
+    <% tasks.each do |task| %>
+    <li class="<%= task.completed_at.present? ? "completed" : "" %>"><%= task.title %> - <%= task.due_date %></li>
+    <% end %>
+  </ul>
+</ul>
+<% end %>
+
+
