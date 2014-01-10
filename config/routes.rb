@@ -6,9 +6,6 @@ Boarderland::Application.routes.draw do
     collection do
       post :add
     end
-    member do
-      delete :remove
-    end
   end
 
   root "lists#index"
