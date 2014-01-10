@@ -1,5 +1,5 @@
 <section class="list">
-  <h1><%= link_to list.title, list_path(list.id) %> - <%= button_to "remove", list_path(list.id), method: :delete %></h1>
+  <h1><%= link_to list.title, list_path(list.id) %></h1>
   <% if list.assignee_ids.present? %>
     <ul class="avatars">
       <% list.assignee_ids.each do |id| %>

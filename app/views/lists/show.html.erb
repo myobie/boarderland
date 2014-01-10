@@ -30,3 +30,7 @@
     </section>
   <% end %>
 </section>
+
+<hr>
+<p><%= button_to "remove", list_path(@list.id), method: :delete %></p>
+<p>(This will hide the project from the dashbaord for every member of the list.)</p>
