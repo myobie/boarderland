@@ -39,29 +39,4 @@ class ListsController < ApplicationController
     @list = info(List.find(params[:id]))
     render
   end
-
-  private
-
-  def wunderlist_lists
-    @wunderlist_lists ||= wunderlist.get("v1/lists")
-  end
-
-  def wunderlist_uncompleted_tasks(list_id)
-    wunderlist.get("v1/tasks", list_id: list_id)
-  end
-
-  def wunderlist_completed_tasks(list_id)
-    # There is a problem where completed: true sends back all tasks + completed instead of only completed
-    wunderlist.get("v1/tasks", list_id: list_id, completed: true).select(&:completed_at)
-  end
-
-  def info(list)
-    json = wunderlist_lists.find { |remote_list| remote_list.id == list.wunderlist_id }
-    uncompleted_tasks = wunderlist_uncompleted_tasks(list.wunderlist_id)
-    completed_tasks = wunderlist_completed_tasks(list.wunderlist_id)
-    Wunder::List.new(list: list,
-                     json: json,
-                     uncompleted_tasks: uncompleted_tasks,
-                     completed_tasks: completed_tasks)
-  end
 end
