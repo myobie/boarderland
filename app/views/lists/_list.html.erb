@@ -9,7 +9,7 @@
   <% end %>
   <p class="ratio" data-ratio="<%= list.ratio_of_completed_tasks %>"><%= list.percent_complete %>% complete</p>
   <p class="vs">
-    <%= list.uncompleted_tasks_count %> tasks /
+    <%= pluralize list.uncompleted_tasks_count, 'task' %> /
     <%= list.completed_tasks_count %> completed
   </p>
 </section>
