@@ -1,0 +1,22 @@
+.completed { background-color: #66FFCC;}
+
+.list {
+  border: 1px solid #BBB;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  min-height: 15em;
+}
+.list h1 {
+  font-size: 1.5em;
+}
+
+.progress {
+  background-color: #eee;
+  height: 10px;
+  width: 100%;
+}
+.progress .complete {
+  background-color: #093;
+}

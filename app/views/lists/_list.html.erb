@@ -1,5 +1,13 @@
-<section class="list">
+<section class="list col-md-5">
   <h1><%= link_to list.title, list_path(list.id) %></h1>
+
+  <div class="progress" title="<%= list.percent_complete %>% complete"><div class="complete" style="width:<%= list.percent_complete %>%">&nbsp;</div>&nbsp;</div>
+
+  <p class="vs">
+    <%= pluralize list.uncompleted_tasks_count, 'task' %> /
+    <%= list.completed_tasks_count %> (<%= list.percent_complete %>%) completed
+  </p>
+
   <% if list.assignee_ids.present? %>
     <ul class="avatars">
       <% list.assignee_ids.each do |id| %>
@@ -7,9 +15,4 @@
       <% end %>
     </ul>
   <% end %>
-  <p class="ratio" data-ratio="<%= list.ratio_of_completed_tasks %>"><%= list.percent_complete %>% complete</p>
-  <p class="vs">
-    <%= pluralize list.uncompleted_tasks_count, 'task' %> /
-    <%= list.completed_tasks_count %> completed
-  </p>
 </section>

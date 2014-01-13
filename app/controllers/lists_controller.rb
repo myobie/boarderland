@@ -8,7 +8,7 @@ class ListsController < ApplicationController
 
     @lists = db_lists.each_with_object([]) do |list, arr|
       arr << info(list)
-    end
+    end.sort {|x,y| x.title <=> y.title}
 
     if @lists.empty?
       redirect_to new_list_path
