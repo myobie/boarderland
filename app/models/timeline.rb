@@ -10,7 +10,7 @@ class Timeline
     end
 
     def pct_complete
-      sprint.tasks.select(&:completed_at?).count/tasks.count rescue 0
+      100 * @tasks.select(&:completed_at?).count / @tasks.count
     end
   end
 
