@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Boarderland</title>
-  <%= stylesheet_link_tag "application", media: "all" %>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
-
-<%= javascript_include_tag "application" %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
