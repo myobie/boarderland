@@ -1,10 +1,22 @@
-.completed { background-color: #66FFCC;}
+.completed {
+  background-color: #093;
+  color: #fff;
+}
 
-.list {
+.sprint li p {
+  margin: 0;
+  padding: 3px;
+}
+
+.list, .sprint {
   border: 1px solid #BBB;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list {
   margin: 10px;
   min-height: 15em;
 }
