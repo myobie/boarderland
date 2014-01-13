@@ -4,8 +4,7 @@
   <section class="sprint col-md-12">
     <h1>before <%= sprint.date %></h1>
 
-    <% pct_complete = 100 * sprint.tasks.select(&:completed_at?).count/sprint.tasks.count rescue 0 %>
-    <div class="progress" title="<%= pct_complete %>% complete"><div class="complete" style="width:<%= pct_complete %>%">&nbsp;</div>&nbsp;</div>
+    <div class="progress" title="<%= sprint.pct_complete %>% complete"><div class="complete" style="width:<%= sprint.pct_complete %>%">&nbsp;</div>&nbsp;</div>
 
     <ul>
       <% sprint.tasks.each do |task| %>

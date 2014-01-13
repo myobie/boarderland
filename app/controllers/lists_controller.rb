@@ -2,7 +2,6 @@ class ListsController < ApplicationController
   before_action :require_access_token
 
   def index
-    Rails.logger.warn("Chad about to get wunderlist_lists")
     list_ids = wunderlist_lists.map(&:id)
     db_lists = List.where(wunderlist_id: list_ids)
 
