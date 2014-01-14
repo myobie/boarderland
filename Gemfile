@@ -4,6 +4,7 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 gem 'jquery-rails'
+gem 'uglifier'
 
 gem 'typhoeus'
 gem 'mashed'
