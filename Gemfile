@@ -17,3 +17,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-remote'
 end
+
+group :production do
+  gem 'rails_12factor'
+end

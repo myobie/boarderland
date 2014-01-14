@@ -6,5 +6,9 @@ Bundler.require(:default, Rails.env)
 
 module Boarderland
   class Application < Rails::Application
+    config.generators do |g|
+      g.helper false
+      g.assets false
+    end
   end
 end
