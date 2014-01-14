@@ -3,9 +3,14 @@ class Timeline
 
   class Sprint
     attr_reader :date, :tasks
+
     def initialize(date, tasks)
       @date = date
       @tasks = tasks
+    end
+
+    def pct_complete
+      100 * @tasks.select(&:completed_at?).count / @tasks.count
     end
   end
 
@@ -32,7 +37,7 @@ class Timeline
     sprints = []
     sprint_boundaries.inject(@tasks) do |unselected_tasks, date|
       for_this_sprint, unclaimed = unselected_tasks.partition{|t| Date.parse(t.due_date) <= date }
-      sprints << Sprint.new(date, for_this_sprint)
+      sprints << Sprint.new(date, for_this_sprint) if for_this_sprint.any?
       unclaimed
     end
     sprints

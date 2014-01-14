@@ -29,25 +29,16 @@ GEM
     atomic (1.1.14)
     builder (3.1.4)
     coderay (1.0.9)
-    coffee-rails (4.0.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.6.3)
     erubis (2.7.0)
     ethon (0.6.1)
       ffi (>= 1.3.0)
       mime-types (~> 1.18)
-    execjs (2.0.2)
     ffi (1.9.3)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -84,11 +75,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
-    sass (3.2.13)
-    sass-rails (4.0.1)
-      railties (>= 4.0.0, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
     slop (3.4.6)
     sprockets (2.10.1)
       hike (~> 1.2)
@@ -109,15 +95,11 @@ GEM
     typhoeus (0.6.6)
       ethon (~> 0.6.1)
     tzinfo (0.3.38)
-    uglifier (2.4.0)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  coffee-rails (~> 4.0.0)
   jquery-rails
   mashed
   pg
@@ -125,6 +107,4 @@ DEPENDENCIES
   pry-remote
   puma
   rails (= 4.0.2)
-  sass-rails (~> 4.0.0)
   typhoeus
-  uglifier (>= 1.3.0)

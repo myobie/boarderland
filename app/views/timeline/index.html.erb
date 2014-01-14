@@ -1,13 +1,17 @@
-<% @timeline.each do |sprint| %>
+<h1>Sprints</h1>
 
-<ul>
-  <h2>before <%= sprint.date %></h2>
-  <ul>
-    <% sprint.tasks.each do |task| %>
-    <li class="<%= task.completed_at.present? ? "completed" : "" %>"><%= task.title %> - <%= task.due_date %></li>
-    <% end %>
-  </ul>
-</ul>
+<% @timeline.each do |sprint| %>
+  <section class="sprint col-md-12">
+    <h1>before <%= sprint.date %></h1>
+
+    <div class="progress" title="<%= sprint.pct_complete %>% complete"><div class="complete" style="width:<%= sprint.pct_complete %>%">&nbsp;</div>&nbsp;</div>
+
+    <ul>
+      <% sprint.tasks.each do |task| %>
+      <li><p class="<%= task.completed_at.present? ? "completed" : "" %>"><%= task.title %> - <%= task.due_date %></p></li>
+      <% end %>
+    </ul>
+  </section>
 <% end %>
 
 

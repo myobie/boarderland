@@ -10,6 +10,4 @@ class TimelineController < ApplicationController
     end.flatten
     @timeline = Timeline.new(tasks.select(&:due_date).sort_by(&:due_date)) #sorry about all this
   end
-
-
 end

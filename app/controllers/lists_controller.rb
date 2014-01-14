@@ -2,13 +2,12 @@ class ListsController < ApplicationController
   before_action :require_access_token
 
   def index
-    Rails.logger.warn("Chad about to get wunderlist_lists")
     list_ids = wunderlist_lists.map(&:id)
     db_lists = List.where(wunderlist_id: list_ids)
 
     @lists = db_lists.each_with_object([]) do |list, arr|
       arr << info(list)
-    end
+    end.sort {|x,y| x.title <=> y.title}
 
     if @lists.empty?
       redirect_to new_list_path
