@@ -10,6 +10,8 @@ gem 'mashed'
 
 gem 'puma'
 
+gem 'dotenv-rails'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-remote'
