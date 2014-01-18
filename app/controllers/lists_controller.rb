@@ -36,8 +36,14 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = info(List.find(params[:id]))
+    list = List.find(params[:id])
+    @list = info(list)
     render
+  end
+
+  def by_wunderlist_id
+    @list = info(List.find_by_wunderlist_id(params[:id]))
+    render :show
   end
 
   def destroy

@@ -32,3 +32,7 @@
 .progress .complete {
   background-color: #093;
 }
+
+.completed a {
+  color: white;
+}

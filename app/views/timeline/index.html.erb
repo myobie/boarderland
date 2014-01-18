@@ -8,7 +8,7 @@
 
     <ul>
       <% sprint.tasks.each do |task| %>
-      <li><p class="<%= task.completed_at.present? ? "completed" : "" %>"><%= task.title %> - <%= task.due_date %></p></li>
+      <li><p class="task <%= task.completed_at.present? ? "completed" : "" %>"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %> - <%= task.due_date %></p></li>
       <% end %>
     </ul>
   </section>
