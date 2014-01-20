@@ -7,6 +7,9 @@ Boarderland::Application.routes.draw do
     collection do
       post :add
     end
+    member do
+      get :by_wunderlist_id
+    end
   end
 
   root "lists#index"
