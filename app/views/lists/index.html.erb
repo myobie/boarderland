@@ -1,6 +1,10 @@
 <h1>Progress</h1>
 
-<%= render collection: @lists, partial: "list" %>
+<% if @lists.present? %>
+  <%= render collection: @lists, partial: "list" %>
+<% else %>
+  <p>None of the shared lists you are a part of have been added.</p>
+<% end %>
 
 <div class="col-md-12">
   <p><%= link_to 'Add a list', new_list_path %></p>

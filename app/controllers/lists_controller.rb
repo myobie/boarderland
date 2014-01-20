@@ -9,11 +9,7 @@ class ListsController < ApplicationController
       arr << info(list)
     end.sort {|x,y| x.title <=> y.title}
 
-    if @lists.empty?
-      redirect_to new_list_path
-    else
-      render
-    end
+    render
   end
 
   def new
