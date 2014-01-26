@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
   <%= stylesheet_link_tag "application", media: "all" %>
 
+  <%= javascript_include_tag "application" %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,6 +18,7 @@
     <ul class="nav navbar-nav">
       <li><%= link_to("Overview", lists_path) %> </li>
       <li><%= link_to("Sprints", timeline_path) %> </li>
+      <li><%= link_to("Boards", boards_path) %> </li>
     </ul>
   </div>
   <div class="container">

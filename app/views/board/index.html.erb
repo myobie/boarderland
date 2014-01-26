@@ -1,0 +1,95 @@
+<h1>Board</h1>
+
+  <section>
+    <ul class="nav nav-pills">
+      <li><%= link_to "All", boards_path %></a></li>
+      <% @lists.each do |list| %>
+        <li><%= link_to list.title, boards_path(:list_id => list.wunderlist_id) %></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="row">
+
+    <div class="col-md-4">
+      <div class="box board">
+
+        <h2>Open <small><%= @board.open_and_assigned_tasks.count %></small></h2>
+
+        <h4>Assigned Tasks <small><%= @board.assigned_tasks.count %></small></h4>
+        <div class="list-group sortable" id="open">
+
+          <% @board.assigned_tasks.each do |task| %>
+            <div href="#" class="list-group-item">
+              <h5 class="list-group-item-heading"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %></h5>
+              <p class="list-grou-item-text text-muted">
+                <%= task.due_date %>
+                <% if task.assignee_id %>
+                  -
+                  <strong>assigned to <%= task.assignee_id %></strong>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+
+        <h4>Open Tasks <small><%= @board.open_tasks.count %></small></h4>
+        <div class="list-group">
+          <% @board.open_tasks.each do |task| %>
+            <div href="#" class="list-group-item">
+              <h5 class="list-group-item-heading"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %></h5>
+              <p class="list-grou-item-text text-muted">
+                <%= task.due_date %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="box board">
+
+        <h2>In-Progress <small><%= @board.in_progress_tasks.count %></small></h2>
+
+        <div class="list-group sortable" id="assigned">
+          <% @board.in_progress_tasks.each do |task| %>
+            <div href="#" class="list-group-item">
+              <h5 class="list-group-item-heading"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %></h5>
+              <p class="list-grou-item-text text-muted">
+                <%= task.due_date %>
+                <% if task.assignee_id %>
+                  -
+                  <strong>assigned to <%= task.assignee_id %></strong>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="box board">
+        <h2>Done <small><%= @board.done_tasks.count %></small></h2>
+
+        <ul class="list-group sortable" id="done">
+          <% @board.done_tasks.each do |task| %>
+            <li href="#" class="list-group-item">
+              <h5 class="list-group-item-heading"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %></h5>
+              <p class="list-grou-item-text text-muted">
+                <%= task.due_date %>
+                <% if task.assignee_id %>
+                  -
+                  <strong>assigned to <%= task.assignee_id %></strong>
+                <% end %>
+              </p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+
+  </section>
+
