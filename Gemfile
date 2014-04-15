@@ -9,6 +9,9 @@ gem 'uglifier'
 gem 'typhoeus'
 gem 'mashed'
 
+gem 'dalli'
+gem 'kgio'
+gem 'memcachier'
 gem 'puma'
 
 gem 'dotenv-rails'

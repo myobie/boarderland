@@ -10,5 +10,6 @@ module Boarderland
       g.helper false
       g.assets false
     end
+    config.cache_store = :dalli_store
   end
 end

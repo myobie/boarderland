@@ -36,15 +36,18 @@ class Wunderlist
   def get(path, params = {})
     path = "/#{path.gsub(/^\//, '')}"
     url = "#{config.base_url}#{path}"
-    response = Typhoeus.get(url, params: params, headers: headers)
-    if response.success?
-      json = JSON.parse response.body
-      if json.is_a?(Array)
-        json.map! { |j| Mashed::Mash.new(j) }
-      elsif json.is_a?(Hash)
-        Mashed::Mashed.new j
-      else
-        j
+    cache_key = [:wunderlist, :api, :request, :get, url].join(":")
+    Rail.cache.fetch(cache_key, expires_in: 10.minutes) do
+      response = Typhoeus.get(url, params: params, headers: headers)
+      if response.success?
+        json = JSON.parse response.body
+        if json.is_a?(Array)
+          json.map! { |j| Mashed::Mash.new(j) }
+        elsif json.is_a?(Hash)
+          Mashed::Mashed.new j
+        else
+          j
+        end
       end
     end
   end
