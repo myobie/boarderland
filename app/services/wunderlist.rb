@@ -37,7 +37,8 @@ class Wunderlist
     path = "/#{path.gsub(/^\//, '')}"
     url = "#{config.base_url}#{path}"
     cache_key = [:v1, :wunderlist, :api, :request, :get, url, params.hash].join(":")
-    Rails.cache.fetch(cache_key, expires_in: 10.minutes) do
+    expires = 7.minutes + rand(3).minutes
+    Rails.cache.fetch(cache_key, expires_in: expires) do
       response = Typhoeus.get(url, params: params, headers: headers)
       if response.success?
         json = JSON.parse response.body
