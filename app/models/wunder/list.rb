@@ -24,7 +24,7 @@ class Wunder::List
   end
 
   def user_name(id)
-    user = users.detect { |u| assignee_ids.include?(u.id) }
+    user = users.detect { |u| assignee_ids.include?(u.id) } if users
     user.name if user
   end
 
