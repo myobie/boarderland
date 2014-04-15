@@ -1,4 +1,4 @@
-<section class="list col-md-5">
+<div class="list col-md-5">
   <h1><%= link_to list.title, list_path(list.id) %></h1>
 
   <div class="progress" title="<%= list.percent_complete %>% complete"><div class="complete" style="width:<%= list.percent_complete %>%">&nbsp;</div>&nbsp;</div>
@@ -15,4 +15,4 @@
       <% end %>
     </ul>
   <% end %>
-</section>
+</div>

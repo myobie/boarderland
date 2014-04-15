@@ -1,3 +1,22 @@
+@font-face {
+    font-family: 'wunderfontregular';
+    src: url('wunderfont-webfont.eot');
+    src: url('wunderfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('wunderfont-webfont.woff') format('woff'),
+         url('wunderfont-webfont.ttf') format('truetype'),
+         url('wunderfont-webfont.svg#wunderfontregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wunderfont {
+  font-family: 'wunderfont';
+}
+
+.blue {
+  color: #2b88d9 !important;
+}
+
 .completed {
   background-color: #093;
   color: #fff;
@@ -22,7 +41,8 @@
 
 .list {
   margin: 10px;
-  min-height: :;em;
+  min-height: 15em;
+  width: 40%;
 }
 .list h1 {
   font-size: 1.5em;
@@ -40,4 +60,3 @@
 .completed a {
   color: white;
 }
-

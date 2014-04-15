@@ -44,7 +44,12 @@ class ApplicationController < ActionController::Base
     # There is a problem where completed: true sends back all tasks + completed instead of only completed
     @wunderlist_completed_tasks ||= {}
     @wunderlist_completed_tasks[list_id] ||= begin
-      wunderlist.get("v1/tasks", list_id: list_id, completed: true).select(&:completed_at)
+      tasks = wunderlist.get("v1/tasks", list_id: list_id, completed: true)
+      if tasks
+        tasks.select(&:completed_at)
+      else
+        []
+      end
     end
   end
 end

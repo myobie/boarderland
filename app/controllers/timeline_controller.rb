@@ -2,12 +2,11 @@ class TimelineController < ApplicationController
   def index
     list_ids = wunderlist_lists.map(&:id)
     db_lists = List.where(wunderlist_id: list_ids)
-    @lists = db_lists.each_with_object([]) do |list, arr|
-      arr << info(list)
+
+    @completed_tasks = db_lists.map(&:wunderlist_id).each_with_object([]) do |id, completed|
+      completed.concat wunderlist_completed_tasks(id)
     end
-    tasks = @lists.map do |list|
-      wunderlist_completed_tasks(list.wunderlist_id).concat wunderlist_uncompleted_tasks(list.wunderlist_id)
-    end.flatten
-    @timeline = Timeline.new(tasks.select(&:due_date).sort_by(&:due_date)) #sorry about all this
+
+    @completed_tasks.sort_by!{ |x| x.completed_at }.reverse
   end
 end

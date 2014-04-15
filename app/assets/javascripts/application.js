@@ -12,12 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require masonry.pkgd.min
 //= require_tree .
 
 $( document ).ready(function() {
-  $(function() {
-    $( "#open, #progress, #done" ).sortable({
-      connectWith: ".sortable"
-    }).disableSelection();
+  var container = document.querySelector('#container');
+  var msnry = new Masonry( container, {
+    // options...
+    itemSelector: '.list',
+    columnWidth: 100
   });
 });

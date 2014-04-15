@@ -1,17 +1,5 @@
-<h1>Sprints</h1>
-
-<% @timeline.each do |sprint| %>
-  <section class="sprint col-md-12">
-    <h1>before <%= sprint.date %></h1>
-
-    <div class="progress" title="<%= sprint.pct_complete %>% complete"><div class="complete" style="width:<%= sprint.pct_complete %>%">&nbsp;</div>&nbsp;</div>
-
-    <ul>
-      <% sprint.tasks.each do |task| %>
-      <li><p class="task <%= task.completed_at.present? ? "completed" : "" %>"><%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %> - <%= task.due_date %></p></li>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
-
-
+<div class="container">
+  <ul class="list-group">
+    <%= render collection: @completed_tasks, partial: "task" %>
+  </ul>
+</div>

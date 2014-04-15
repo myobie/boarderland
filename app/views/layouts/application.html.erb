@@ -2,24 +2,22 @@
 <html>
 <head>
   <title>Boarderland</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
   <%= stylesheet_link_tag "application", media: "all" %>
-
   <%= javascript_include_tag "application" %>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <div class="navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li><%= link_to("Overview", lists_path) %> </li>
-      <li><%= link_to("Sprints", timeline_path) %> </li>
-      <li><%= link_to("Boards", boards_path) %> </li>
-    </ul>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <a class="blue wunderfont navbar-brand" href="/">6w Timeline</a>
+      <ul class="nav navbar-nav">
+        <li><%= link_to("Timeline", timeline_path) %> </li>
+        <li><%= link_to("Progress", lists_path) %> </li>
+        <li><%= link_to("Sprints", sprints_path) %> </li>
+        <li><%= link_to("Boards", boards_path) %> </li>
+      </ul>
+    </div>
   </div>
   <div class="container">
     <%= yield %>

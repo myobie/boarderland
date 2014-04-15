@@ -1,4 +1,4 @@
-class Timeline
+class Sprint
   attr_reader :tasks, :sprints
 
   class Sprint

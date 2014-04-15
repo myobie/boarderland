@@ -1,7 +1,9 @@
 <h1>Progress</h1>
 
 <% if @lists.present? %>
-  <%= render collection: @lists, partial: "list" %>
+  <div id="container">
+    <%= render collection: @lists, partial: "list" %>
+  </div>
 <% else %>
   <p>None of the shared lists you are a part of have been added.</p>
 <% end %>
