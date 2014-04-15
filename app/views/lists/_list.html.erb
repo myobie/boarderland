@@ -10,8 +10,8 @@
 
   <% if list.assignee_ids.present? %>
     <ul class="avatars">
-      <% list.assignee_ids.each do |id| %>
-        <li><%= id %></li>
+      <% list.assignee_names.each do |name| %>
+        <li><%= name %></li>
       <% end %>
     </ul>
   <% end %>

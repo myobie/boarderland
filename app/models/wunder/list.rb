@@ -2,7 +2,7 @@ require 'forwardable'
 
 class Wunder::List
   include ActiveModel::Model
-  attr_accessor :list, :json, :uncompleted_tasks, :completed_tasks
+  attr_accessor :list, :json, :uncompleted_tasks, :completed_tasks, :users
 
   extend Forwardable
 
@@ -17,6 +17,15 @@ class Wunder::List
 
   def assignee_ids
     all_tasks.map(&:assignee_id).compact.uniq
+  end
+
+  def assignee_names
+    assignee_ids.map { |id| user_name(id) }
+  end
+
+  def user_name(id)
+    user = users.detect { |u| assignee_ids.include?(u.id) }
+    user.name if user
   end
 
   def ratio_of_completed_tasks

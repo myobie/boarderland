@@ -17,10 +17,23 @@ class ApplicationController < ActionController::Base
     json = wunderlist_lists.find { |remote_list| remote_list.id == list.wunderlist_id }
     uncompleted_tasks = wunderlist_uncompleted_tasks(list.wunderlist_id)
     completed_tasks = wunderlist_completed_tasks(list.wunderlist_id)
+    people = get_people(list.id)
     Wunder::List.new(list: list,
                      json: json,
                      uncompleted_tasks: uncompleted_tasks,
-                     completed_tasks: completed_tasks)
+                     completed_tasks: completed_tasks,
+                     users: people)
+  end
+
+  def get_person(id)
+    @all_people.detect { |user| user.id == id }
+  end
+
+  def get_people(list_id)
+    users = wunderlist.get("v1/users", list_id: list_id)
+    @all_people ||= []
+    @all_people.concat(users) if users
+    users
   end
 
   def wunderlist_lists

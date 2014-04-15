@@ -1,6 +1,6 @@
 <li>
   <%= task.title %>
   <% if task.assignee_id %>
-    <strong>(assigned to <%= task.assignee_id %>)</strong>
+    <strong>(assigned to <%= get_person(task.assignee_id) %>)</strong>
   <% end %>
 </li>
