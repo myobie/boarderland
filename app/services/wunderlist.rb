@@ -36,7 +36,7 @@ class Wunderlist
   def get(path, params = {})
     path = "/#{path.gsub(/^\//, '')}"
     url = "#{config.base_url}#{path}"
-    cache_key = [:wunderlist, :api, :request, :get, url].join(":")
+    cache_key = [:v1, :wunderlist, :api, :request, :get, url, params.hash].join(":")
     Rails.cache.fetch(cache_key, expires_in: 10.minutes) do
       response = Typhoeus.get(url, params: params, headers: headers)
       if response.success?
