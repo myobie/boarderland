@@ -4,8 +4,8 @@
   <% if @list.assignee_ids.present? %>
     <h2>People working on this project:</h2>
     <ul>
-      <% @list.assignee_ids.each do |id| %>
-        <li><%= id %></li>
+      <% @list.assignee_names.each do |name| %>
+        <li><%= name %></li>
       <% end %>
     </ul>
   <% else %>
