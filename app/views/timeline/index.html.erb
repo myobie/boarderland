@@ -1,5 +1,16 @@
-<div class="container">
-  <ul class="list-group">
-    <%= render collection: @completed_tasks, partial: "task" %>
-  </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="wunderfont blue">Current Activity</h2>
+      <div>
+        <%= render collection: @tasks_in_progress, partial: "task" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3 class="wunderfont blue">Finished Tasks</h3>
+      <div>
+        <%= render collection: @completed_tasks, partial: "completed_task" %>
+      </div>
+    </div>
+  </div>
 </div>
