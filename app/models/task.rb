@@ -1,3 +1,3 @@
-class List < ActiveRecord::Base
+class Task < ActiveRecord::Base
   include Concerns::FindOrCreateWithJson
 end
