@@ -19,7 +19,7 @@ class WunderlistController < ApplicationController
         integration.update(wunderlist_user_id: user.wunderlist_id)
       else
         session.clear
-        render text: "whoops", status: 500
+        render text: "uh", status: 500
         return
       end
 
