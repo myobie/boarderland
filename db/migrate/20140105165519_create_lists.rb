@@ -3,6 +3,7 @@ class CreateLists < ActiveRecord::Migration
     create_table :lists do |t|
       t.integer :wunderlist_id
       t.json    :data
+      t.boolean :synced
       t.timestamps
     end
 
