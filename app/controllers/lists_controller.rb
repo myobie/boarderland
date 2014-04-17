@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   def index
     list_ids = wunderlist_lists.map(&:id)
-    db_lists = List.where(wunderlist_id: list_ids)
+    db_lists = List.where(wunderlist_id: list_ids, synced: true)
 
     @lists = db_lists.each_with_object([]) do |list, arr|
       arr << info(list)
