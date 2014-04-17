@@ -25,7 +25,8 @@ class ListsController < ApplicationController
     list_ids = params[:lists].map(&:to_i)
     List.transaction do
       list_ids.each do |id|
-        List.create! wunderlist_id: id
+        l = List.find_or_create_by! wunderlist_id: id
+        l.update(synced: true)
       end
     end
     redirect_to lists_path
@@ -43,7 +44,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    List.find(params[:id]).destroy!
+    l = List.find(params[:id])
+    l.update(synced: false)
+    l.save!
     redirect_to lists_path
   end
 end
