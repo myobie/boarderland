@@ -9,7 +9,7 @@
     <div class="col-md-4">
       <h4 class="wunderfont blue">Finished Tasks</h4>
       <div>
-        <%= render collection: @completed_tasks, partial: "completed_task" %>
+        <%= render collection: @completed_tasks[0..60], partial: "completed_task" %>
       </div>
     </div>
   </div>

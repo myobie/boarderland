@@ -25,7 +25,9 @@
 
       <div class="col-md-2">
         <% if completed_task.assignee_id  %>
-          <img src="http://a.wunderlist.com/api/v1/avatar?size=32&user_id=<%= completed_task.assignee_id %>" alt="" />
+          <h6>
+            <img src="http://a.wunderlist.com/api/v1/avatar?size=32&user_id=<%= completed_task.assignee_id %>" alt="" />
+          </h6>
         <% end %>
       </div>
     </div>

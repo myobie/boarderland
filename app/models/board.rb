@@ -19,7 +19,7 @@ class Board
   end
 
   def in_progress_tasks
-    @progress_tasks = uncompleted_tasks_in_progress.sort_by(&:due_date)
+    @progress_tasks = uncompleted_tasks_in_progress.sort_by(&:updated_at).reverse
   end
 
   def uncompleted_tasks_not_in_progress
@@ -31,7 +31,7 @@ class Board
   end
 
   def done_tasks
-    @completed_tasks.select(&:due_date).sort_by(&:due_date)
+    @completed_tasks.select(&:due_date).sort_by(&:due_date).reverse
   end
 
 end

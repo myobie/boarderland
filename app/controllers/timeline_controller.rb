@@ -11,7 +11,7 @@ class TimelineController < ApplicationController
 
     @tasks_in_progress = db_lists.map(&:wunderlist_id).each_with_object([]) do |id, completed|
       completed.concat wunderlist_uncompleted_tasks(id).select(&:assignee_id)
-    end
+    end.select { |t| t.title.include?("#in-progress") }
 
     @tasks_in_progress.sort_by!{ |x| x.created_at }.reverse
 
