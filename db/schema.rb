@@ -33,17 +33,23 @@ ActiveRecord::Schema.define(version: 20140415210510) do
 
   create_table "integrations", force: true do |t|
     t.string   "access_token"
+    t.integer  "wunderlist_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "integrations", ["wunderlist_user_id"], name: "index_integrations_on_wunderlist_user_id", using: :btree
 
   create_table "lists", force: true do |t|
     t.integer  "wunderlist_id"
     t.json     "data"
+    t.boolean  "synced"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
   add_index "lists", ["wunderlist_id"], name: "index_lists_on_wunderlist_id", using: :btree
 
   create_table "tasks", force: true do |t|

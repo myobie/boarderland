@@ -45,7 +45,7 @@ class Wunderlist
         if json.is_a?(Array)
           json.map! { |j| Mashed::Mash.new(j) }
         elsif json.is_a?(Hash)
-          Mashed::Mashed.new j
+          Mashed::Mash.new j
         else
           j
         end
