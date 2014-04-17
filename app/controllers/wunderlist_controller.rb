@@ -7,7 +7,7 @@ class WunderlistController < ApplicationController
     code = params[:code]
     access_token = Wunderlist.access_token(code)
     session[:access_token] = access_token
-    Integration.find_or_create(access_token: access_token)
+    Integration.find_or_create_by(access_token: access_token)
     redirect_to root_path
   end
 end

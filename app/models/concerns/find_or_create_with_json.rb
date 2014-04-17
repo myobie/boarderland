@@ -3,7 +3,7 @@ module Concerns::FindOrCreateWithJson
 
   module ClassMethods
     def find_or_create_with_json(json)
-      model = find_or_create(wunderlist_id: json["id"])
+      model = find_or_create_by(wunderlist_id: json["id"])
       model.update(data: json)
       model
     end
