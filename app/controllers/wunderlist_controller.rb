@@ -11,7 +11,7 @@ class WunderlistController < ApplicationController
 
     integration = Integration.find_or_create_by(access_token: access_token)
     user_info = wunderlist.get("v1/user")
-    user = User.find_or_create_by_json(user_info)
+    user = User.find_or_create_with_json(user_info)
     integration.update(wunderlist_user_id: user.wunderlist_id)
 
     redirect_to root_path
