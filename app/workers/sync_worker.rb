@@ -15,8 +15,10 @@ class SyncWorker
     if resp.success?
       resp.each do |json|
         list = List.find_or_create_with_json(json)
-        get_tasks_for_list(list)
-        get_comments_for_list(list)
+        if list.synced?
+          get_tasks_for_list(list)
+          get_comments_for_list(list)
+        end
       end
     end
   end
