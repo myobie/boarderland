@@ -17,7 +17,7 @@
             <small>by <%= @list.user_name(completed_task.assignee_id) %></small>
           <% end %>
           <% if completed_task.completed_at %>
-            <small class="text-right"><%= DateTime.parse(completed_task.completed_at).strftime(" on %d.%m.%Y") %></small>
+            <small class="text-right"><%= DateTime.parse(completed_task.completed_at).strftime(" on %Y-%m-%d") %></small>
           <% end  %>
         </p>
 

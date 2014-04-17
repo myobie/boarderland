@@ -1,0 +1,36 @@
+<% @list = @lists.select { |l| l.wunderlist_id == task.list_id }.first  %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-10">
+      <h5>
+        <% if task.completed_at %>
+          <span class="glyphicon glyphicon-check"></span>
+        <% else %>
+          <span class="glyphicon glyphicon-forward"></span>
+        <% end %>
+        <%= link_to task.title, by_wunderlist_id_list_path(task.list_id) %>
+      </h5>
+      <h6>
+        <%= @list.title %>
+      </h6>
+      <p class="text-muted">
+        <% if task.completed_at %>
+          <%= DateTime.parse(task.completed_at).strftime("completed on %Y-%m-%d") %>
+        <% else  %>
+          <% if task.due_date %> due on <%= task.due_date %> <% end %>
+        <% end %>
+        <% if task.assignee_id %>
+          <%= @list.user_name(task.assignee_id) %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <% if task.assignee_id  %>
+        <h5>
+          <img src="http://a.wunderlist.com/api/v1/avatar?size=32&user_id=<%= task.assignee_id %>" alt="" />
+        </h5>
+      <% end %>
+    </div>
+  </div>
+</div>
