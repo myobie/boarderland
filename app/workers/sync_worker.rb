@@ -12,7 +12,7 @@ class SyncWorker
 
   def get_lists
     resp = service.get("v1/lists")
-    if resp.success?
+    if resp
       resp.each do |json|
         list = List.find_or_create_with_json(json)
         if list.synced?
@@ -25,7 +25,7 @@ class SyncWorker
 
   def get_users
     resp = service.get("v1/users")
-    if resp.success?
+    if resp
       resp.each do |json|
         User.find_or_create_with_json(json)
       end
@@ -34,7 +34,7 @@ class SyncWorker
 
   def get_tasks_for_list(list)
     resp = service.get("v1/tasks", list_id: list.wunderlist_id)
-    if resp.success?
+    if resp
       resp.each do |json|
         Task.find_or_create_with_json(json)
       end
@@ -43,7 +43,7 @@ class SyncWorker
 
   def get_comments_for_list(list)
     resp = service.get("v1/comments", list_id: list.wunderlist_id)
-    if resp.success?
+    if resp
       resp.each do |json|
         Comment.find_or_create_with_json(json)
       end
@@ -52,7 +52,7 @@ class SyncWorker
 
   def get_comments_for_task(task)
     resp = service.get("v1/comments", task_id: task.wunderlist_id)
-    if resp.success?
+    if resp
       resp.each do |json|
         Comment.find_or_create_with_json(json)
       end
