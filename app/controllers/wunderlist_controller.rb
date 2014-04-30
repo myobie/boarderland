@@ -1,4 +1,6 @@
 class WunderlistController < ApplicationController
+  skip_before_filter :require_access_token
+
   def authorize
     redirect_to Wunderlist.authorize_url
   end
