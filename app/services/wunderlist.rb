@@ -38,18 +38,19 @@ class Wunderlist
     url = "#{config.base_url}#{path}"
     cache_key = [:v1, :wunderlist, :api, :request, :get, url, params.hash].join(":")
     expires = 7.minutes + rand(3).minutes
-    Rails.cache.fetch(cache_key, expires_in: expires) do
+    json = Rails.cache.fetch(cache_key, expires_in: expires) do
       response = Typhoeus.get(url, params: params, headers: headers)
       if response.success?
-        json = JSON.parse response.body
-        if json.is_a?(Array)
-          json.map! { |j| Mashed::Mash.new(j) }
-        elsif json.is_a?(Hash)
-          Mashed::Mash.new j
-        else
-          j
-        end
+        JSON.parse response.body
       end
+    end
+
+    if json.is_a?(Array)
+      json.map! { |j| Mashed::Mash.new(j) }
+    elsif json.is_a?(Hash)
+      Mashed::Mash.new j
+    else
+      j
     end
   end
 
